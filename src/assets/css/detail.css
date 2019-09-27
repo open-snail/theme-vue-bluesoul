@@ -1800,7 +1800,7 @@ h2.archive-title span:after {
 	position: relative;
 	display: block;
 	text-align: center;
-	width: 300px;
+	width: 100%;
 	margin: 0 auto
 }
 

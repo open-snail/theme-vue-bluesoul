@@ -63,12 +63,14 @@
         <!-- post-formats -->
         <div class="pagination">
           <el-pagination
-            :total="this.listQuery.total"
-            :page.sync="listQuery.page"
-            :limit.sync="listQuery.size"
-            layout="prev, pager, next"
-          >
-          </el-pagination>
+            :current-page.sync="listQuery.page"
+            :page-size.sync="listQuery.size"
+            :layout="layout"
+            :total="total"
+            v-bind="$attrs"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+          />
         </div>
         <!-- -pagination  -->
       </div>
@@ -85,14 +87,14 @@ export default {
   components: {},
   data() {
     return {
-      value: false,
       list: null,
+      total: 0,
       listQuery: {
-        keywords: "",
         page: 1,
-        size: 20,
-        total: 30
-      }
+        size: 5
+      },
+      keywords: "",
+      layout: "prev, pager, next"
     };
   },
   created() {
@@ -100,19 +102,30 @@ export default {
   },
   mounted() {
     bus.$on("searchValue", value => {
-      this.getList(value);
-      console.log(value);
+      this.keywords = value;
+      this.getList();
     });
   },
   methods: {
-    getList(keywords) {
-      fetchArticleList({
-        keywords: keywords
-      }).then(res => {
+    getList() {
+      if (this.keywords !== "") {
+        this.listQuery["keywords"] = this.keywords;
+      }
+
+      fetchArticleList(this.listQuery).then(res => {
         const { models, pageInfo } = res;
         this.list = models;
         this.listQuery = pageInfo;
+        this.total = pageInfo.total;
       });
+    },
+    handleSizeChange(val) {
+      this.listQuery["page"] = val;
+      this.getList();
+    },
+    handleCurrentChange(val) {
+      this.listQuery["page"] = val;
+      this.getList();
     }
   }
 };

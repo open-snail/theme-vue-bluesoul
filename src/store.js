@@ -41,8 +41,8 @@ export default new Vuex.Store({
         return result;
       }
     },
-    async getConfigList({ commit }, params) {
-      const result = await fetchConfigList({ type: 0 });
+    async getConfigList({ commit }) {
+      const result = await fetchConfigList();
       if (result.success === 1) {
         commit("SET_CONFIG", result.model);
         return result;

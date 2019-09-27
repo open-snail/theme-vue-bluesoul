@@ -77,7 +77,7 @@ export default {
       }
     },
     getConfig() {
-      this.$store.dispatch("getConfigList", { type: 0 }).then(res => {
+      this.$store.dispatch("getConfigList").then(res => {
         if (res) {
           const { models } = res;
           models.forEach(item => {
