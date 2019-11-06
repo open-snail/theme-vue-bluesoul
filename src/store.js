@@ -1,9 +1,9 @@
-import Vue from "vue";
+// import Vue from "vue";
 import Vuex from "vuex";
 import { fetchMasterInfo, login, getInfo, fetchConfigList } from "@/api/api";
 import { getToken, setToken, removeToken } from "@/utils/auth";
 
-Vue.use(Vuex);
+// Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {

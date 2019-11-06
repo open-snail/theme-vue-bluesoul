@@ -4,7 +4,7 @@
       <div class="container">
         <div class="posts-list js-posts">
           <div class="post post-layout-list">
-            <div class="postnormal review " v-for="item in list" :key="item.id">
+            <div class="postnormal review " v-for="item in list" :key="item.id" style="margin-bottom: 40px;">
               <div class="post-container review-item">
                 <div class="row review-item-wrapper">
                   <div class="col-sm-3">

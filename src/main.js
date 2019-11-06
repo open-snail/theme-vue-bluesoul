@@ -11,17 +11,16 @@ Vue.directive("highlight", highlight);
 
 import Cookies from "js-cookie";
 
-import Element from "element-ui";
+import ELEMENT from 'element-ui'
 import "element-ui/lib/theme-chalk/index.css";
 
-import "@/assets/css/detail.css"; // global css
 import "@/assets/css/index.css"; // global css
 
 import VueParticles from "vue-particles";
 Vue.use(VueParticles);
 Vue.use(Meta);
 Vue.use(Cookies);
-Vue.use(Element);
+Vue.use(ELEMENT);
 
 Vue.config.productionTip = false;
 

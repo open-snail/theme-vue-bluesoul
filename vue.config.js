@@ -11,11 +11,11 @@ module.exports = {
       template: "public/index.html", // 模板来源
       filename: "index.html", // 在 dist/index.html 的输出
       title: "Index Page", // 当使用 title 选项时,在 template 中使用：<title><%= htmlWebpackPlugin.options.title %></title>
-      chunks: ["chunk-vendors", "chunk-common", "index"] // 在这个页面中包含的块，默认情况下会包含,提取出来的通用 chunk 和 vendor chunk
+      chunks: ["chunk-vendors", "chunk-common", "index"]// 在这个页面中包含的块，默认情况下会包含,提取出来的通用 chunk 和 vendor chunk
     }
   },
   lintOnSave: true, // 是否在保存的时候检查
-  productionSourceMap: true, // 生产环境是否生成 sourceMap 文件
+  productionSourceMap: false, // 生产环境是否生成 sourceMap 文件
   css: {
     extract: true, // 是否使用css分离插件 ExtractTextPlugin
     sourceMap: false, // 开启 CSS source maps
@@ -41,5 +41,14 @@ module.exports = {
   pluginOptions: {
     // 第三方插件配置
     // ...
+  },
+  configureWebpack:{
+    externals: {
+      'vue': 'Vue',
+      'vuex': 'Vuex',
+      'vue-router': 'VueRouter',
+      'element-ui': 'ELEMENT',
+      'Axios':'axios'
+    }
   }
 };
