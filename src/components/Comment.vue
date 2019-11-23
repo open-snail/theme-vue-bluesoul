@@ -61,6 +61,7 @@
               :total="this.listQuery.total"
               :page.sync="listQuery.page"
               :limit.sync="listQuery.size"
+              :page-size="listQuery.size"
               layout="prev, pager, next"
               @prev-click="prevPage"
               @next-click="nextPage"
