@@ -32,7 +32,7 @@ module.exports = {
     proxy: {
       // 配置多个代理(配置一个 proxy: 'http://localhost:4000' )
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://127.0.0.1:8086/api/hello-blog-service`,
+        target: `http://127.0.0.1:8086/api/plumemo-service`,
         changeOrigin: true,
         pathRewrite: { "^/api/blog": "/" }
       }
